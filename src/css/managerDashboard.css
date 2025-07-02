@@ -1,0 +1,91 @@
+.manager-dashboard {
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f5fbff;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.logout-btn {
+  background-color: #d9534f;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+section {
+  margin-bottom: 2.5rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+th, td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+th {
+  background-color: #eaf4fd;
+}
+
+.green-row {
+  background-color: #e3f9e5;
+}
+
+.red-row {
+  background-color: #ffe4e1;
+}
+
+.badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+  color: white;
+}
+
+.status-pending {
+  background-color: #ffc107;
+}
+.status-approved {
+  background-color: #28a745;
+}
+.status-rejected {
+  background-color: #dc3545;
+}
+
+.approve, .reject {
+  padding: 4px 8px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+}
+
+.approve {
+  background-color: #28a745;
+}
+
+.reject {
+  background-color: #dc3545;
+}
+
+.empty-msg {
+  color: #555;
+  padding: 10px;
+}
