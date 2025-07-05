@@ -1,7 +1,7 @@
 // src/axiosSetup.js
 import axios from 'axios';
 
-axios.defaults.baseURL = import.meta.env.VITE_API_URL;
+axios.defaults.baseURL = 'http://localhost:8000/api/';
 
 axios.interceptors.request.use((config) => {
   const publicRoutes = ['register', 'login', 'managers'];
