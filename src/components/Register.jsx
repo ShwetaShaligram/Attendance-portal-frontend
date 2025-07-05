@@ -22,7 +22,7 @@ const Register = () => {
   // ✅ Fetch managers (GET /api/managers/)
   useEffect(() => {
     axios
-      .get('http://localhost:8000/api/managers/', {
+      axios.get(import.meta.env.VITE_API_URL + '/managers/', {
         headers: { Authorization: undefined }, // No auth needed
       })
       .then((res) => setManagers(res.data))
@@ -45,7 +45,7 @@ const Register = () => {
     };
 
     try {
-      const response = await axios.post('http://localhost:8000/api/register/', dataToSend, {
+      const response = await axios.post(import.meta.env.VITE_API_URL + '/register/', dataToSend, {
         headers: { 'Content-Type': 'application/json' },
       });
 
