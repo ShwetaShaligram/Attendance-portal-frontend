@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import axios from '../axiosSetup'; // Use configured axios
 import { useNavigate } from 'react-router-dom';
 import '../css/login.css';
 
@@ -16,12 +16,12 @@ const Login = () => {
     e.preventDefault();
 
     const payload = {
-      email: credentials.email.trim(), // ✅ Changed from username to email
+      email: credentials.email.trim(),
       password: credentials.password,
     };
 
     try {
-      const res = await axios.post('http://localhost:8000/api/login/', payload, {
+      const res = await axios.post('/login/', payload, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -33,14 +33,12 @@ const Login = () => {
         throw new Error('Invalid response from server');
       }
 
-      // ✅ Store details
       localStorage.setItem('access_token', access);
       localStorage.setItem('refresh_token', refresh);
       localStorage.setItem('user', JSON.stringify(user));
-      localStorage.setItem('username', user.full_name); // ✅ use full_name
+      localStorage.setItem('username', user.full_name);
       localStorage.setItem('role', user.role);
 
-      // ✅ Redirect based on role
       const role = user?.role?.toLowerCase();
       switch (role) {
         case 'employee':
@@ -62,15 +60,15 @@ const Login = () => {
       console.error('Login failed:', err);
       const msg =
         err.response?.status === 401
-          ? ' Invalid email or password'
-          : err.response?.data?.error || ' Something went wrong. Please try again.';
+          ? 'Invalid email or password'
+          : err.response?.data?.error || 'Something went wrong. Please try again.';
       setError(msg);
     }
   };
 
   return (
     <div className="login-container">
-      <h2> Login</h2>
+      <h2>Login</h2>
 
       {error && <p className="error-msg">{error}</p>}
 
