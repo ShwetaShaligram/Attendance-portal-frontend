@@ -41,7 +41,7 @@ const EmployeeDashboard = () => {
     try {
       const now = new Date();
       const cutoff = new Date();
-      cutoff.setHours(10,6); // 10.6AM
+      cutoff.setHours(10, 6); // 10:06 AM
 
       if (now > cutoff) {
         const confirmLate = window.confirm('⚠️ You are checking in late! You may need to submit a regularization request.');
@@ -72,6 +72,14 @@ const EmployeeDashboard = () => {
 
   const handleRegularize = async (e) => {
     e.preventDefault();
+
+    // ✅ Prevent multiple requests for same date
+    const alreadyRequested = regularizations.some(req => req.date === form.date);
+    if (alreadyRequested) {
+      alert('⚠️ You have already submitted a regularization request for this date.');
+      return;
+    }
+
     try {
       await axios.post('employee/regularize/', form, {
         headers: { Authorization: `Bearer ${token}` },
@@ -79,7 +87,12 @@ const EmployeeDashboard = () => {
       setMsg('✅ Request submitted!');
       setError('');
       setForm({ date: '', reason: '' });
-      setTimeout(() => window.location.reload(), 1000);
+
+      // Reload requests after submission
+      const res = await axios.get('employee/my-regularizations/', {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setRegularizations(res.data);
     } catch (err) {
       setMsg('');
       setError('❌ Failed to submit request.');

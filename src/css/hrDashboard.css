@@ -202,3 +202,39 @@ select, input[type="date"] {
     flex-direction: column;
   }
 }
+.green-tile {
+  background: #c6f7d4 !important;
+  border-radius: 50%;
+}
+.red-tile {
+  background: #fddcdc !important;
+  border-radius: 50%;
+}
+.react-calendar__tile--now {
+  background: #e0efff !important;
+  font-weight: bold;
+}
+.green-tile {
+  background: #c6f7d4 !important;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+.red-tile {
+  background: #fddcdc !important;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+.react-calendar__tile--now {
+  background: #e0efff !important;
+  font-weight: bold;
+}
+.green { background-color: #e8f5e9; }
+.red { background-color: #fdecea; }
+
+.tag.late { background: #f39c12; color: white; padding: 2px 6px; border-radius: 5px; margin-top: 5px; display: inline-block; }
+.tag.reg { background: #17a2b8; color: white; padding: 2px 6px; border-radius: 5px; margin-left: 5px; }
+
+.green-tile { background-color: #d4edda !important; }
+.red-tile { background-color: #f8d7da !important; }
